@@ -1,0 +1,17 @@
+%body
+  .wrapper
+    .Side-bar
+      .Side-bar__user-name
+        .Top-items
+          .Top-items__name TECHCAMP
+          .Top-items__icons
+            .Top-items__icons--edit
+            = link_to "#" do
+              = icon('fas', 'edit', class: 'edit')
+            .Top-items__icons--cog
+            = link_to "#" do
+              = icon('fas', 'cog', class: 'cog')
+      .Side-bar__group-list
+        .Group
+          .Group__name tech camp
+          .Group__message まだメッセージがありません
