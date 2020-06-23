@@ -3,37 +3,25 @@
     .Chat-main
       .Chat-main__group-info
         .Header-left
-          .Header-left__name Name
-          .Header-left__member Member : HiroTerao
-        = link_to "#", class: "Header-right" do
+          .Header-left__name
+            = @group.name
+          .Header-left__member
+            Member:
+            .Header-left__memberList
+              - @group.users.each do |user|
+                = user.name
+
+        = link_to edit_group_path(@group), class: "Header-right" do
           Edit
       .Chat-main__message-list
-        .Main-box
-          .Main-info
-            .Main-info__name HiroTerao
-            .Main-info__date 2020年06月21日 09時04分
-          .Message
-            .Message__content あ
-        
-        .Main-box
-          .Main-info
-            .Main-info__name Tanaka Taro
-            .Main-info__date 2020年06月21日 09時10分
-          .Message
-            .Message__content い
-
-        .Main-box
-          .Main-info
-            .Main-info__name Suzuki jiro
-            .Main-info__date 2020年06月21日 09時15分
-          .Message
-            .Message__content う
+        = render @messages
 
       .Chat-main__send-form
-        %form.Form
-          .Form__contents
-            %input.Form__inputContent{"placeholder": "type a message", "type": "text"}
-            %label{class: "Form__inputImage"}
-              = icon('far', 'image', class: 'Form__icon')
-              %input.Hidden{type: "file"}
-          %input.Form__submit{"value": "Send", "type": "submit"}
+        .Form
+          = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
+            .Form__contents
+              = f.text_field :content, class: 'Form__inputContent', placeholder: 'type a message'
+              = f.label :image, class: 'Form__inputImage' do
+                = icon('far', 'image', class: 'Form__icon')
+                = f.file_field :image, class: 'Hidden'
+            = f.submit 'Send', class: 'Form__submit'
