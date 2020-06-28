@@ -17,7 +17,7 @@
         = render @messages
 
       .Chat-main__send-form
-        .Form
+        .FormAll
           = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
             .Form__contents
               = f.text_field :content, class: 'Form__inputContent', placeholder: 'type a message'
