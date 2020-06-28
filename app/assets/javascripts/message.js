@@ -43,7 +43,6 @@ $(function(){
   $('.Form').on('submit', function(e){
     e.preventDefault();
     let formData = new FormData(this);
-    console.log()
     let url = $(this).attr('action');
     $.ajax({
       url: url,
@@ -59,10 +58,11 @@ $(function(){
       $('.Chat-main__message-list').append(html);
       $('.Chat-main__message-list').animate({ scrollTop: $('.Chat-main__message-list')[0].scrollHeight});
       $('form')[0].reset();
-      $('.Form__submit').prop('disabled', false);
     })
     .fail(function(){
       alert("メッセージ送信に失敗しました");
+    })
+    .always(function(){
       $('.Form__submit').prop('disabled', false);
     })
   });
