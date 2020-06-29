@@ -38,7 +38,6 @@ $(function() {
       dataType: "json"
     })
     .done(function(users) {
-      console.log('ok');
       $("#UserSearchResult").empty();
       if (users.length !== 0) {
         users.forEach(function(user) {
