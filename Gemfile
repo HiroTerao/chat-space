@@ -62,10 +62,12 @@ gem "haml-rails", ">= 1.0", '<= 2.0.1'
 gem 'font-awesome-sass'
 gem 'devise'
 gem 'pry-rails'
-gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-rails'
 
 group :production do
   gem 'unicorn', '5.4.1'
 end
+
+gem 'carrierwave'
+gem 'fog-aws'
